@@ -17,6 +17,9 @@
 		F8EECA262C076F980078C9B9 /* DoodleChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EECA252C076F980078C9B9 /* DoodleChallenge.swift */; };
 		F8EECA282C076FB80078C9B9 /* ChallengeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EECA272C076FB80078C9B9 /* ChallengeViewModel.swift */; };
 		F8EECA2A2C07734E0078C9B9 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EECA292C07734E0078C9B9 /* DrawingView.swift */; };
+		F8EECA2C2C07792B0078C9B9 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EECA2B2C07792B0078C9B9 /* ShareSheet.swift */; };
+		F8EECA2E2C077C120078C9B9 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EECA2D2C077C120078C9B9 /* StorageManager.swift */; };
+		F8EECA302C077C870078C9B9 /* SavedDoodlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EECA2F2C077C870078C9B9 /* SavedDoodlesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		F8EECA252C076F980078C9B9 /* DoodleChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleChallenge.swift; sourceTree = "<group>"; };
 		F8EECA272C076FB80078C9B9 /* ChallengeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModel.swift; sourceTree = "<group>"; };
 		F8EECA292C07734E0078C9B9 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		F8EECA2B2C07792B0078C9B9 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		F8EECA2D2C077C120078C9B9 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		F8EECA2F2C077C870078C9B9 /* SavedDoodlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedDoodlesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,8 +108,11 @@
 			children = (
 				F8EEC9FB2C076F5C0078C9B9 /* DailyDoodleChallengeApp.swift */,
 				F8EEC9FD2C076F5C0078C9B9 /* ContentView.swift */,
+				F8EECA2D2C077C120078C9B9 /* StorageManager.swift */,
+				F8EECA2F2C077C870078C9B9 /* SavedDoodlesView.swift */,
 				F8EECA252C076F980078C9B9 /* DoodleChallenge.swift */,
 				F8EECA272C076FB80078C9B9 /* ChallengeViewModel.swift */,
+				F8EECA2B2C07792B0078C9B9 /* ShareSheet.swift */,
 				F8EECA292C07734E0078C9B9 /* DrawingView.swift */,
 				F8EEC9FF2C076F610078C9B9 /* Assets.xcassets */,
 				F8EECA012C076F610078C9B9 /* Preview Content */,
@@ -267,7 +276,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8EEC9FE2C076F5C0078C9B9 /* ContentView.swift in Sources */,
+				F8EECA302C077C870078C9B9 /* SavedDoodlesView.swift in Sources */,
+				F8EECA2C2C07792B0078C9B9 /* ShareSheet.swift in Sources */,
 				F8EECA262C076F980078C9B9 /* DoodleChallenge.swift in Sources */,
+				F8EECA2E2C077C120078C9B9 /* StorageManager.swift in Sources */,
 				F8EECA2A2C07734E0078C9B9 /* DrawingView.swift in Sources */,
 				F8EECA282C076FB80078C9B9 /* ChallengeViewModel.swift in Sources */,
 				F8EEC9FC2C076F5C0078C9B9 /* DailyDoodleChallengeApp.swift in Sources */,
@@ -437,6 +449,7 @@
 				DEVELOPMENT_TEAM = SUBZPCYPDK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -466,6 +479,7 @@
 				DEVELOPMENT_TEAM = SUBZPCYPDK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

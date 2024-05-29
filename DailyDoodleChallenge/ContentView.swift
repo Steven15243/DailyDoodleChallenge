@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var viewModel = ChallengeViewModel()
     @State private var showingDrawingView = false
+    @State private var showingSavedDoodles = false
 
     var body: some View {
         NavigationView {
@@ -35,9 +36,23 @@ struct ContentView: View {
                         .cornerRadius(10)
                 }
                 .padding()
+
+                Button(action: {
+                    showingSavedDoodles = true
+                }) {
+                    Text("View Saved Doodles")
+                        .padding()
+                        .background(Color.orange)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding()
             }
             .sheet(isPresented: $showingDrawingView) {
                 DrawingView(drawing: $viewModel.drawing)
+            }
+            .sheet(isPresented: $showingSavedDoodles) {
+                SavedDoodlesView()
             }
             .navigationTitle("Daily Doodle Challenge")
         }

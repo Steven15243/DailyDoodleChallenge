@@ -1,18 +1,14 @@
-//
-//  ShareSheet.swift
-//  DailyDoodleChallenge
-//
-//  Created by Stefan on 29/05/2024.
-//
-
 import SwiftUI
+import UIKit
 
-struct ShareSheet: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct ShareSheet: UIViewControllerRepresentable {
+    var activityItems: [Any]
+    var applicationActivities: [UIActivity]? = nil
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let controller = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
+        return controller
     }
-}
 
-#Preview {
-    ShareSheet()
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
