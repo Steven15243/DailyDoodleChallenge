@@ -18,10 +18,6 @@ struct ContentView: View {
                 Text(viewModel.currentChallenge.description)
                     .font(.subheadline)
                     .padding()
-                Button("New Challenge") {
-                    viewModel.generateNewChallenge()
-                }
-                .padding()
                 Button("Start Drawing") {
                     showingDrawingView = true
                 }
@@ -50,6 +46,7 @@ struct ContentView: View {
             NotificationCenter.default.addObserver(forName: NSNotification.Name("DoodleSaved"), object: nil, queue: .main) { _ in
                 loadSavedDoodles()
             }
+            viewModel.loadDailyChallenge()
         }
     }
 
