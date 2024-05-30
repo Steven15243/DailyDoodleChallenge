@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F8EEC9FC2C076F5C0078C9B9 /* DailyDoodleChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EEC9FB2C076F5C0078C9B9 /* DailyDoodleChallengeApp.swift */; };
+		02E5628D6E26F44BC9F52242 /* Pods_DailyDoodleChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD94FBA3E9F901F7F01DCE /* Pods_DailyDoodleChallenge.framework */; };
+		F83609C82C07ABE70081F267 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F83609C72C07ABE60081F267 /* GoogleService-Info.plist */; };
+		F83609CA2C07B0BC0081F267 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83609C92C07B0BC0081F267 /* AppDelegate.swift */; };
+		F83609CC2C07B5B20081F267 /* CommunityDoodlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83609CB2C07B5B20081F267 /* CommunityDoodlesView.swift */; };
+		F83609CE2C07B6FB0081F267 /* SavedDoodle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83609CD2C07B6FB0081F267 /* SavedDoodle.swift */; };
+		F8CD54AA2C088F6500E9B058 /* DrawingControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CD54A92C088F6500E9B058 /* DrawingControlsView.swift */; };
+		F8CD54AC2C08987E00E9B058 /* PKCanvasViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CD54AB2C08987E00E9B058 /* PKCanvasViewWrapper.swift */; };
+		F8EEC9FC2C076F5C0078C9B9 /* DailyDoodleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EEC9FB2C076F5C0078C9B9 /* DailyDoodleApp.swift */; };
 		F8EEC9FE2C076F5C0078C9B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EEC9FD2C076F5C0078C9B9 /* ContentView.swift */; };
 		F8EECA002C076F610078C9B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8EEC9FF2C076F610078C9B9 /* Assets.xcassets */; };
 		F8EECA032C076F610078C9B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8EECA022C076F610078C9B9 /* Preview Assets.xcassets */; };
@@ -40,8 +47,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2BFD94FBA3E9F901F7F01DCE /* Pods_DailyDoodleChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyDoodleChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B09F2B1DE4759F8700716B6 /* Pods-DailyDoodleChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyDoodleChallenge.debug.xcconfig"; path = "Target Support Files/Pods-DailyDoodleChallenge/Pods-DailyDoodleChallenge.debug.xcconfig"; sourceTree = "<group>"; };
+		E1F24FDB44756B8884EC2A4A /* Pods-DailyDoodleChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyDoodleChallenge.release.xcconfig"; path = "Target Support Files/Pods-DailyDoodleChallenge/Pods-DailyDoodleChallenge.release.xcconfig"; sourceTree = "<group>"; };
+		F83609C72C07ABE60081F267 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F83609C92C07B0BC0081F267 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F83609CB2C07B5B20081F267 /* CommunityDoodlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDoodlesView.swift; sourceTree = "<group>"; };
+		F83609CD2C07B6FB0081F267 /* SavedDoodle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedDoodle.swift; sourceTree = "<group>"; };
+		F8CD54A92C088F6500E9B058 /* DrawingControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingControlsView.swift; sourceTree = "<group>"; };
+		F8CD54AB2C08987E00E9B058 /* PKCanvasViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKCanvasViewWrapper.swift; sourceTree = "<group>"; };
 		F8EEC9F82C076F5C0078C9B9 /* DailyDoodleChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyDoodleChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F8EEC9FB2C076F5C0078C9B9 /* DailyDoodleChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDoodleChallengeApp.swift; sourceTree = "<group>"; };
+		F8EEC9FB2C076F5C0078C9B9 /* DailyDoodleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDoodleApp.swift; sourceTree = "<group>"; };
 		F8EEC9FD2C076F5C0078C9B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F8EEC9FF2C076F610078C9B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8EECA022C076F610078C9B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -63,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02E5628D6E26F44BC9F52242 /* Pods_DailyDoodleChallenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +100,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		127FF8898281B5A80480FC2E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7B09F2B1DE4759F8700716B6 /* Pods-DailyDoodleChallenge.debug.xcconfig */,
+				E1F24FDB44756B8884EC2A4A /* Pods-DailyDoodleChallenge.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6BB338A7A8AB92B7C39EB5A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2BFD94FBA3E9F901F7F01DCE /* Pods_DailyDoodleChallenge.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F8EEC9EF2C076F5C0078C9B9 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +124,8 @@
 				F8EECA0B2C076F610078C9B9 /* DailyDoodleChallengeTests */,
 				F8EECA152C076F610078C9B9 /* DailyDoodleChallengeUITests */,
 				F8EEC9F92C076F5C0078C9B9 /* Products */,
+				127FF8898281B5A80480FC2E /* Pods */,
+				6BB338A7A8AB92B7C39EB5A1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,7 +142,8 @@
 		F8EEC9FA2C076F5C0078C9B9 /* DailyDoodleChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				F8EEC9FB2C076F5C0078C9B9 /* DailyDoodleChallengeApp.swift */,
+				F8EEC9FB2C076F5C0078C9B9 /* DailyDoodleApp.swift */,
+				F83609C92C07B0BC0081F267 /* AppDelegate.swift */,
 				F8EEC9FD2C076F5C0078C9B9 /* ContentView.swift */,
 				F8EECA2D2C077C120078C9B9 /* StorageManager.swift */,
 				F8EECA2F2C077C870078C9B9 /* SavedDoodlesView.swift */,
@@ -114,6 +151,11 @@
 				F8EECA272C076FB80078C9B9 /* ChallengeViewModel.swift */,
 				F8EECA2B2C07792B0078C9B9 /* ShareSheet.swift */,
 				F8EECA292C07734E0078C9B9 /* DrawingView.swift */,
+				F8CD54A92C088F6500E9B058 /* DrawingControlsView.swift */,
+				F8CD54AB2C08987E00E9B058 /* PKCanvasViewWrapper.swift */,
+				F83609CB2C07B5B20081F267 /* CommunityDoodlesView.swift */,
+				F83609CD2C07B6FB0081F267 /* SavedDoodle.swift */,
+				F83609C72C07ABE60081F267 /* GoogleService-Info.plist */,
 				F8EEC9FF2C076F610078C9B9 /* Assets.xcassets */,
 				F8EECA012C076F610078C9B9 /* Preview Content */,
 			);
@@ -152,9 +194,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8EECA1C2C076F620078C9B9 /* Build configuration list for PBXNativeTarget "DailyDoodleChallenge" */;
 			buildPhases = (
+				C1E474AE03A1AAF95E65220A /* [CP] Check Pods Manifest.lock */,
 				F8EEC9F42C076F5C0078C9B9 /* Sources */,
 				F8EEC9F52C076F5C0078C9B9 /* Frameworks */,
 				F8EEC9F62C076F5C0078C9B9 /* Resources */,
+				C25E19CF9C8E24B917368D74 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -251,6 +295,7 @@
 			files = (
 				F8EECA032C076F610078C9B9 /* Preview Assets.xcassets in Resources */,
 				F8EECA002C076F610078C9B9 /* Assets.xcassets in Resources */,
+				F83609C82C07ABE70081F267 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +315,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C1E474AE03A1AAF95E65220A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DailyDoodleChallenge-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C25E19CF9C8E24B917368D74 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DailyDoodleChallenge/Pods-DailyDoodleChallenge-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DailyDoodleChallenge/Pods-DailyDoodleChallenge-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DailyDoodleChallenge/Pods-DailyDoodleChallenge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F8EEC9F42C076F5C0078C9B9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -277,12 +364,17 @@
 			files = (
 				F8EEC9FE2C076F5C0078C9B9 /* ContentView.swift in Sources */,
 				F8EECA302C077C870078C9B9 /* SavedDoodlesView.swift in Sources */,
+				F8CD54AC2C08987E00E9B058 /* PKCanvasViewWrapper.swift in Sources */,
+				F83609CE2C07B6FB0081F267 /* SavedDoodle.swift in Sources */,
+				F8CD54AA2C088F6500E9B058 /* DrawingControlsView.swift in Sources */,
 				F8EECA2C2C07792B0078C9B9 /* ShareSheet.swift in Sources */,
+				F83609CA2C07B0BC0081F267 /* AppDelegate.swift in Sources */,
 				F8EECA262C076F980078C9B9 /* DoodleChallenge.swift in Sources */,
 				F8EECA2E2C077C120078C9B9 /* StorageManager.swift in Sources */,
 				F8EECA2A2C07734E0078C9B9 /* DrawingView.swift in Sources */,
+				F83609CC2C07B5B20081F267 /* CommunityDoodlesView.swift in Sources */,
 				F8EECA282C076FB80078C9B9 /* ChallengeViewModel.swift in Sources */,
-				F8EEC9FC2C076F5C0078C9B9 /* DailyDoodleChallengeApp.swift in Sources */,
+				F8EEC9FC2C076F5C0078C9B9 /* DailyDoodleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +448,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -419,7 +511,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -440,6 +532,7 @@
 		};
 		F8EECA1D2C076F620078C9B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B09F2B1DE4759F8700716B6 /* Pods-DailyDoodleChallenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -450,6 +543,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -470,6 +564,7 @@
 		};
 		F8EECA1E2C076F620078C9B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1F24FDB44756B8884EC2A4A /* Pods-DailyDoodleChallenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -480,6 +575,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

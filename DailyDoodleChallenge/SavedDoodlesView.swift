@@ -1,10 +1,7 @@
 import SwiftUI
 
 struct SavedDoodlesView: View {
-    @State private var savedDoodles: [SavedDoodle] = []
-    @State private var selectedDoodle: SavedDoodle?
-    @State private var selectedImage: UIImage?
-    @State private var isShareSheetPresented = false
+    @Binding var savedDoodles: [SavedDoodle]
 
     var body: some View {
         NavigationView {
@@ -15,44 +12,29 @@ struct SavedDoodlesView: View {
                     Text(doodle.description)
                         .font(.subheadline)
                         .foregroundColor(.gray)
-                    if let image = StorageManager.shared.loadImage(withName: doodle.imageName) {
+                    if let url = URL(string: doodle.imageName), let imageData = try? Data(contentsOf: url), let image = UIImage(data: imageData) {
                         Image(uiImage: image)
                             .resizable()
                             .scaledToFit()
                             .frame(height: 200)
-                            .onTapGesture {
-                                selectedDoodle = doodle
-                                selectedImage = image
-                                isShareSheetPresented = true
-                            }
                     } else {
-                        Text("Image not found")
+                        Text("Image not available")
                             .foregroundColor(.red)
                     }
                 }
                 .padding()
             }
             .navigationTitle("Saved Doodles")
-            .onAppear {
-                loadSavedDoodles()
-            }
-            .sheet(isPresented: $isShareSheetPresented) {
-                if let image = selectedImage, let doodle = selectedDoodle {
-                    ShareSheet(activityItems: [image, "\(doodle.title)\n\(doodle.description)"])
-                } else {
-                    Text("No image to share")
-                }
-            }
         }
-    }
-
-    private func loadSavedDoodles() {
-        savedDoodles = StorageManager.shared.getSavedDoodles()
     }
 }
 
 struct SavedDoodlesView_Previews: PreviewProvider {
+    @State static var savedDoodles: [SavedDoodle] = [
+        SavedDoodle(id: UUID().uuidString, title: "Sample Doodle", description: "This is a sample doodle.", imageName: "")
+    ]
+
     static var previews: some View {
-        SavedDoodlesView()
+        SavedDoodlesView(savedDoodles: $savedDoodles)
     }
 }

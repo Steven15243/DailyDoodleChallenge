@@ -1,8 +1,8 @@
-//
-//  SavedDoodle.swift
-//  DailyDoodleChallenge
-//
-//  Created by Stefan on 29/05/2024.
-//
-
 import Foundation
+
+struct SavedDoodle: Identifiable, Codable {
+    var id: String
+    var title: String
+    var description: String
+    var imageName: String
+}

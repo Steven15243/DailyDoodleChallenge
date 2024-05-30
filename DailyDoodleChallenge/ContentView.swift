@@ -1,9 +1,13 @@
 import SwiftUI
+import PencilKit
 
 struct ContentView: View {
     @StateObject private var viewModel = ChallengeViewModel()
     @State private var showingDrawingView = false
     @State private var showingSavedDoodles = false
+    @State private var showingCommunityDoodles = false
+    @State private var savedDoodles: [SavedDoodle] = []
+    @State private var currentDrawing: PKDrawing? = PKDrawing()
 
     var body: some View {
         NavigationView {
@@ -14,47 +18,44 @@ struct ContentView: View {
                 Text(viewModel.currentChallenge.description)
                     .font(.subheadline)
                     .padding()
-
-                Button(action: {
-                    viewModel.getRandomChallenge()
-                }) {
-                    Text("Get New Challenge")
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+                Button("New Challenge") {
+                    viewModel.generateNewChallenge()
                 }
                 .padding()
-
-                Button(action: {
+                Button("Start Drawing") {
                     showingDrawingView = true
-                }) {
-                    Text("Draw Now")
-                        .padding()
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
                 }
                 .padding()
-
-                Button(action: {
+                Button("Saved Doodles") {
                     showingSavedDoodles = true
-                }) {
-                    Text("View Saved Doodles")
-                        .padding()
-                        .background(Color.orange)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+                    loadSavedDoodles()
+                }
+                .padding()
+                Button("Community Doodles") {
+                    showingCommunityDoodles = true
                 }
                 .padding()
             }
             .sheet(isPresented: $showingDrawingView) {
-                DrawingView(drawing: $viewModel.drawing)
+                DrawingControlsView(drawing: $currentDrawing)
             }
             .sheet(isPresented: $showingSavedDoodles) {
-                SavedDoodlesView()
+                SavedDoodlesView(savedDoodles: $savedDoodles)
             }
-            .navigationTitle("Daily Doodle Challenge")
+            .sheet(isPresented: $showingCommunityDoodles) {
+                CommunityDoodlesView()
+            }
+        }
+        .onAppear {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name("DoodleSaved"), object: nil, queue: .main) { _ in
+                loadSavedDoodles()
+            }
+        }
+    }
+
+    private func loadSavedDoodles() {
+        StorageManager.shared.fetchDoodles { doodles in
+            self.savedDoodles = doodles
         }
     }
 }

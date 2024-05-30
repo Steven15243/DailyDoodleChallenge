@@ -1,22 +1,21 @@
-import Foundation
 import SwiftUI
+import Combine
+
+struct Challenge {
+    var title: String
+    var description: String
+}
 
 class ChallengeViewModel: ObservableObject {
-    @Published var currentChallenge: DoodleChallenge
-    @Published var drawing: UIImage?
-
-    private var challenges: [DoodleChallenge] = [
-        DoodleChallenge(title: "Draw a Cat", description: "Draw a cute cat."),
-        DoodleChallenge(title: "Draw a House", description: "Draw your dream house."),
-        DoodleChallenge(title: "Draw a Tree", description: "Draw a beautiful tree."),
-        // Add more challenges here
-    ]
+    @Published var currentChallenge: Challenge
 
     init() {
-        self.currentChallenge = challenges.randomElement()!
+        self.currentChallenge = Challenge(title: "Daily Doodle", description: "Draw something amazing!")
+        generateNewChallenge()
     }
 
-    func getRandomChallenge() {
-        self.currentChallenge = challenges.randomElement()!
+    func generateNewChallenge() {
+        // Here you can generate a new challenge, for now, let's keep it static
+        currentChallenge = Challenge(title: "New Challenge", description: "Draw a beautiful landscape!")
     }
 }
