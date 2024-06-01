@@ -9,7 +9,7 @@ struct ContentView: View {
     @State private var showingSavedDoodles = false
     @State private var showingCommunityDoodles = false
     @State private var savedDoodles: [SavedDoodle] = []
-    @State private var currentDrawing = PKDrawing() // Initialize PKDrawing
+    @State private var currentDrawing = PKDrawing()
 
     var body: some View {
         NavigationView {
@@ -19,7 +19,7 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
-                
+
                 VStack {
                     Spacer()
 

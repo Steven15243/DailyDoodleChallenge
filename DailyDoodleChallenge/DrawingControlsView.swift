@@ -11,6 +11,10 @@ struct DrawingControlsView: View {
     var body: some View {
         VStack {
             PKCanvasViewWrapper(drawing: $drawing)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.gray.opacity(0.2))
+                .cornerRadius(10)
+                .padding()
 
             TextField("Enter title", text: $title)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -32,6 +36,7 @@ struct DrawingControlsView: View {
                 .padding()
             }
         }
+        .padding()
     }
 
     private func saveDrawing() {

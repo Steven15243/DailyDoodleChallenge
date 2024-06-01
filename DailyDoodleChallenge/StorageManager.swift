@@ -1,47 +1,50 @@
-import Foundation
+import Firebase
 import FirebaseStorage
-import FirebaseFirestore
-import FirebaseFirestoreSwift
 import UIKit
 
 class StorageManager {
     static let shared = StorageManager()
     private let storage = Storage.storage()
-    private let firestore = Firestore.firestore()
 
     func saveDoodle(_ doodle: SavedDoodle, image: UIImage, completion: @escaping (Bool) -> Void) {
-        let imageName = UUID().uuidString
-        let storageRef = storage.reference().child("doodles/\(imageName).png")
-        guard let imageData = image.pngData() else {
+        guard let imageData = image.jpegData(compressionQuality: 0.8) else {
             completion(false)
             return
         }
 
-        storageRef.putData(imageData, metadata: nil) { metadata, error in
+        let imageRef = storage.reference().child("doodles/\(doodle.id ?? UUID().uuidString).jpg")
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+
+        imageRef.putData(imageData, metadata: metadata) { metadata, error in
             if let error = error {
                 print("Error uploading image: \(error.localizedDescription)")
                 completion(false)
                 return
             }
 
-            storageRef.downloadURL { url, error in
+            imageRef.downloadURL { url, error in
                 if let error = error {
                     print("Error getting download URL: \(error.localizedDescription)")
                     completion(false)
                     return
                 }
 
-                guard let url = url else {
+                guard let downloadURL = url else {
+                    print("Failed to retrieve a download URL.")
                     completion(false)
                     return
                 }
 
-                var savedDoodle = doodle
-                savedDoodle.imageName = imageName
-                savedDoodle.imageUrl = url.absoluteString
+                print("Image uploaded successfully. Download URL: \(downloadURL.absoluteString)")
 
+                var savedDoodle = doodle
+                savedDoodle.imageUrl = downloadURL.absoluteString
+
+                // Save the doodle to Firestore
                 do {
-                    try self.firestore.collection("doodles").document(doodle.id ?? UUID().uuidString).setData(from: savedDoodle)
+                    try Firestore.firestore().collection("doodles").document(savedDoodle.id ?? UUID().uuidString).setData(from: savedDoodle)
+                    print("Doodle saved to Firestore with URL: \(savedDoodle.imageUrl ?? "No URL")")
                     completion(true)
                 } catch {
                     print("Error saving doodle to Firestore: \(error.localizedDescription)")
@@ -52,23 +55,42 @@ class StorageManager {
     }
 
     func fetchDoodles(completion: @escaping ([SavedDoodle]) -> Void) {
-        firestore.collection("doodles").getDocuments { snapshot, error in
+        Firestore.firestore().collection("doodles").getDocuments { snapshot, error in
             if let error = error {
                 print("Error fetching doodles: \(error.localizedDescription)")
                 completion([])
                 return
             }
 
-            guard let documents = snapshot?.documents else {
-                completion([])
-                return
-            }
-
-            let doodles = documents.compactMap { document -> SavedDoodle? in
+            let doodles = snapshot?.documents.compactMap { document -> SavedDoodle? in
                 try? document.data(as: SavedDoodle.self)
-            }
+            } ?? []
 
             completion(doodles)
         }
+    }
+
+    func fetchImage(for doodle: SavedDoodle, completion: @escaping (UIImage?) -> Void) {
+        guard let imageUrl = doodle.imageUrl, let url = URL(string: imageUrl) else {
+            completion(nil)
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Error fetching image: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+
+            guard let data = data, let image = UIImage(data: data) else {
+                completion(nil)
+                return
+            }
+
+            completion(image)
+        }
+
+        task.resume()
     }
 }
