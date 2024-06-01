@@ -7,7 +7,6 @@ struct ContentView: View {
     @StateObject private var viewModel = ChallengeViewModel()
     @State private var showingDrawingView = false
     @State private var showingSavedDoodles = false
-    @State private var showingCommunityDoodles = false
     @State private var savedDoodles: [SavedDoodle] = []
     @State private var currentDrawing = PKDrawing()
 
@@ -59,24 +58,11 @@ struct ContentView: View {
                         showingSavedDoodles = true
                         loadSavedDoodles()
                     }) {
-                        Text("Saved Doodles")
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(LinearGradient(gradient: Gradient(colors: [.green, .blue]), startPoint: .top, endPoint: .bottom))
-                            .cornerRadius(10)
-                            .shadow(radius: 10)
-                    }
-                    .padding(.bottom, 10)
-
-                    Button(action: {
-                        showingCommunityDoodles = true
-                    }) {
                         Text("Community Doodles")
                             .font(.system(size: 20, weight: .bold, design: .rounded))
                             .foregroundColor(.white)
                             .padding()
-                            .background(LinearGradient(gradient: Gradient(colors: [.orange, .red]), startPoint: .top, endPoint: .bottom))
+                            .background(LinearGradient(gradient: Gradient(colors: [.green, .blue]), startPoint: .top, endPoint: .bottom))
                             .cornerRadius(10)
                             .shadow(radius: 10)
                     }
@@ -99,10 +85,6 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showingSavedDoodles) {
                 SavedDoodlesView(savedDoodles: $savedDoodles)
-                    .environmentObject(authManager)
-            }
-            .sheet(isPresented: $showingCommunityDoodles) {
-                CommunityDoodlesView()
                     .environmentObject(authManager)
             }
         }

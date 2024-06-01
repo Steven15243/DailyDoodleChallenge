@@ -43,7 +43,14 @@ struct SavedDoodlesView: View {
                         .font(.caption)
                 }
             }
-            .navigationTitle("Saved Doodles")
+            .navigationTitle("Community Doodles")
         }
+    }
+}
+
+struct SavedDoodlesView_Previews: PreviewProvider {
+    static var previews: some View {
+        SavedDoodlesView(savedDoodles: .constant([]))
+            .environmentObject(AuthManager())
     }
 }
