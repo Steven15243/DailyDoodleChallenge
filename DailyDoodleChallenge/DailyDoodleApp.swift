@@ -7,7 +7,8 @@ struct DailyDoodleApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            UserAuthenticationView()
+                .environmentObject(AuthManager())
         }
     }
 }

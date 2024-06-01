@@ -12,6 +12,8 @@
 		F83609CA2C07B0BC0081F267 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83609C92C07B0BC0081F267 /* AppDelegate.swift */; };
 		F83609CC2C07B5B20081F267 /* CommunityDoodlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83609CB2C07B5B20081F267 /* CommunityDoodlesView.swift */; };
 		F83609CE2C07B6FB0081F267 /* SavedDoodle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83609CD2C07B6FB0081F267 /* SavedDoodle.swift */; };
+		F84384D32C08DD83006A9C94 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84384D22C08DD83006A9C94 /* AuthManager.swift */; };
+		F84384D52C08DFB4006A9C94 /* UserAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84384D42C08DFB4006A9C94 /* UserAuthenticationView.swift */; };
 		F8CD54AA2C088F6500E9B058 /* DrawingControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CD54A92C088F6500E9B058 /* DrawingControlsView.swift */; };
 		F8CD54AC2C08987E00E9B058 /* PKCanvasViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CD54AB2C08987E00E9B058 /* PKCanvasViewWrapper.swift */; };
 		F8EEC9FC2C076F5C0078C9B9 /* DailyDoodleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EEC9FB2C076F5C0078C9B9 /* DailyDoodleApp.swift */; };
@@ -54,6 +56,8 @@
 		F83609C92C07B0BC0081F267 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F83609CB2C07B5B20081F267 /* CommunityDoodlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDoodlesView.swift; sourceTree = "<group>"; };
 		F83609CD2C07B6FB0081F267 /* SavedDoodle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedDoodle.swift; sourceTree = "<group>"; };
+		F84384D22C08DD83006A9C94 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		F84384D42C08DFB4006A9C94 /* UserAuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationView.swift; sourceTree = "<group>"; };
 		F8CD54A92C088F6500E9B058 /* DrawingControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingControlsView.swift; sourceTree = "<group>"; };
 		F8CD54AB2C08987E00E9B058 /* PKCanvasViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKCanvasViewWrapper.swift; sourceTree = "<group>"; };
 		F8EEC9F82C076F5C0078C9B9 /* DailyDoodleChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyDoodleChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				F8EEC9FB2C076F5C0078C9B9 /* DailyDoodleApp.swift */,
+				F84384D42C08DFB4006A9C94 /* UserAuthenticationView.swift */,
+				F84384D22C08DD83006A9C94 /* AuthManager.swift */,
 				F83609C92C07B0BC0081F267 /* AppDelegate.swift */,
 				F8EEC9FD2C076F5C0078C9B9 /* ContentView.swift */,
 				F8EECA2D2C077C120078C9B9 /* StorageManager.swift */,
@@ -363,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8EEC9FE2C076F5C0078C9B9 /* ContentView.swift in Sources */,
+				F84384D32C08DD83006A9C94 /* AuthManager.swift in Sources */,
 				F8EECA302C077C870078C9B9 /* SavedDoodlesView.swift in Sources */,
 				F8CD54AC2C08987E00E9B058 /* PKCanvasViewWrapper.swift in Sources */,
 				F83609CE2C07B6FB0081F267 /* SavedDoodle.swift in Sources */,
@@ -372,6 +379,7 @@
 				F8EECA262C076F980078C9B9 /* DoodleChallenge.swift in Sources */,
 				F8EECA2E2C077C120078C9B9 /* StorageManager.swift in Sources */,
 				F8EECA2A2C07734E0078C9B9 /* DrawingView.swift in Sources */,
+				F84384D52C08DFB4006A9C94 /* UserAuthenticationView.swift in Sources */,
 				F83609CC2C07B5B20081F267 /* CommunityDoodlesView.swift in Sources */,
 				F8EECA282C076FB80078C9B9 /* ChallengeViewModel.swift in Sources */,
 				F8EEC9FC2C076F5C0078C9B9 /* DailyDoodleApp.swift in Sources */,

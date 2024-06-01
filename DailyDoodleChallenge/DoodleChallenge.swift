@@ -1,7 +1,7 @@
 import Foundation
 
-struct DoodleChallenge: Identifiable {
-    var id = UUID()
-    var title: String
-    var description: String
+struct DoodleChallenge: Identifiable, Codable {
+    let id = UUID()
+    let title: String
+    let description: String
 }

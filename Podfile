@@ -6,5 +6,7 @@ target 'DailyDoodleChallenge' do
   # Pods for DailyDoodleChallenge
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Storage'
+  pod 'Firebase/Auth'
 end

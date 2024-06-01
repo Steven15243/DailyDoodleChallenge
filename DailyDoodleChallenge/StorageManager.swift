@@ -1,72 +1,72 @@
 import Foundation
-import Firebase
-import FirebaseFirestore
 import FirebaseStorage
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+import UIKit
 
 class StorageManager {
     static let shared = StorageManager()
-    private let db = Firestore.firestore()
     private let storage = Storage.storage()
+    private let firestore = Firestore.firestore()
 
     func saveDoodle(_ doodle: SavedDoodle, image: UIImage, completion: @escaping (Bool) -> Void) {
-        guard let data = image.pngData() else {
+        let imageName = UUID().uuidString
+        let storageRef = storage.reference().child("doodles/\(imageName).png")
+        guard let imageData = image.pngData() else {
             completion(false)
             return
         }
 
-        let imageName = UUID().uuidString + ".png"
-        let storageRef = storage.reference().child("doodles/\(imageName)")
-
-        storageRef.putData(data, metadata: nil) { metadata, error in
+        storageRef.putData(imageData, metadata: nil) { metadata, error in
             if let error = error {
-                print("Error uploading image: \(error)")
+                print("Error uploading image: \(error.localizedDescription)")
                 completion(false)
                 return
             }
 
             storageRef.downloadURL { url, error in
-                guard let downloadURL = url else {
-                    print("Error getting download URL: \(error?.localizedDescription ?? "")")
+                if let error = error {
+                    print("Error getting download URL: \(error.localizedDescription)")
                     completion(false)
                     return
                 }
 
-                var doodleData = doodle
-                doodleData.imageName = downloadURL.absoluteString
-                self.db.collection("drawings").addDocument(data: [
-                    "id": doodleData.id,
-                    "title": doodleData.title,
-                    "description": doodleData.description,
-                    "imageName": doodleData.imageName
-                ]) { error in
-                    if let error = error {
-                        print("Error saving doodle: \(error)")
-                        completion(false)
-                    } else {
-                        completion(true)
-                    }
+                guard let url = url else {
+                    completion(false)
+                    return
+                }
+
+                var savedDoodle = doodle
+                savedDoodle.imageName = imageName
+                savedDoodle.imageUrl = url.absoluteString
+
+                do {
+                    try self.firestore.collection("doodles").document(doodle.id ?? UUID().uuidString).setData(from: savedDoodle)
+                    completion(true)
+                } catch {
+                    print("Error saving doodle to Firestore: \(error.localizedDescription)")
+                    completion(false)
                 }
             }
         }
     }
 
     func fetchDoodles(completion: @escaping ([SavedDoodle]) -> Void) {
-        db.collection("drawings").getDocuments { snapshot, error in
+        firestore.collection("doodles").getDocuments { snapshot, error in
             if let error = error {
-                print("Error fetching doodles: \(error)")
+                print("Error fetching doodles: \(error.localizedDescription)")
                 completion([])
                 return
             }
 
-            let doodles = snapshot?.documents.compactMap { doc -> SavedDoodle? in
-                let data = doc.data()
-                guard let id = data["id"] as? String,
-                      let title = data["title"] as? String,
-                      let description = data["description"] as? String,
-                      let imageName = data["imageName"] as? String else { return nil }
+            guard let documents = snapshot?.documents else {
+                completion([])
+                return
+            }
 
-                return SavedDoodle(id: id, title: title, description: description, imageName: imageName)
-            } ?? []
+            let doodles = documents.compactMap { document -> SavedDoodle? in
+                try? document.data(as: SavedDoodle.self)
+            }
 
             completion(doodles)
         }

@@ -1,14 +1,16 @@
 import SwiftUI
+import Firebase
 import PencilKit
 
 struct ContentView: View {
+    @EnvironmentObject var authManager: AuthManager
     @StateObject private var viewModel = ChallengeViewModel()
     @State private var showingDrawingView = false
     @State private var showingSavedDoodles = false
     @State private var showingCommunityDoodles = false
     @State private var savedDoodles: [SavedDoodle] = []
-    @State private var currentDrawing: PKDrawing? = PKDrawing()
-    
+    @State private var currentDrawing = PKDrawing() // Initialize PKDrawing
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -20,7 +22,7 @@ struct ContentView: View {
                 
                 VStack {
                     Spacer()
-                    
+
                     // Title
                     Text(viewModel.currentChallenge.title)
                         .font(.system(size: 36, weight: .bold, design: .rounded))
@@ -29,7 +31,7 @@ struct ContentView: View {
                         .background(Color.black.opacity(0.7))
                         .cornerRadius(10)
                         .padding(.bottom, 10)
-                    
+
                     // Description
                     Text(viewModel.currentChallenge.description)
                         .font(.system(size: 18, weight: .medium, design: .rounded))
@@ -38,7 +40,7 @@ struct ContentView: View {
                         .background(Color.black.opacity(0.7))
                         .cornerRadius(10)
                         .padding(.bottom, 20)
-                    
+
                     // Buttons
                     Button(action: {
                         showingDrawingView = true
@@ -52,7 +54,7 @@ struct ContentView: View {
                             .shadow(radius: 10)
                     }
                     .padding(.bottom, 10)
-                    
+
                     Button(action: {
                         showingSavedDoodles = true
                         loadSavedDoodles()
@@ -66,7 +68,7 @@ struct ContentView: View {
                             .shadow(radius: 10)
                     }
                     .padding(.bottom, 10)
-                    
+
                     Button(action: {
                         showingCommunityDoodles = true
                     }) {
@@ -79,19 +81,29 @@ struct ContentView: View {
                             .shadow(radius: 10)
                     }
                     .padding(.bottom, 30)
-                    
+
                     Spacer()
+
+                    // Display username if available
+                    if let displayName = authManager.user?.displayName {
+                        Text("Logged in as \(displayName)")
+                            .foregroundColor(.white)
+                            .padding()
+                    }
                 }
                 .padding()
             }
             .sheet(isPresented: $showingDrawingView) {
                 DrawingControlsView(drawing: $currentDrawing)
+                    .environmentObject(authManager)
             }
             .sheet(isPresented: $showingSavedDoodles) {
                 SavedDoodlesView(savedDoodles: $savedDoodles)
+                    .environmentObject(authManager)
             }
             .sheet(isPresented: $showingCommunityDoodles) {
                 CommunityDoodlesView()
+                    .environmentObject(authManager)
             }
         }
         .onAppear {
@@ -101,7 +113,7 @@ struct ContentView: View {
             viewModel.loadDailyChallenge()
         }
     }
-    
+
     private func loadSavedDoodles() {
         StorageManager.shared.fetchDoodles { doodles in
             self.savedDoodles = doodles
@@ -112,5 +124,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(AuthManager())
+            .environmentObject(ChallengeViewModel())
     }
 }

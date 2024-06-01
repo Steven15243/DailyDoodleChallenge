@@ -1,4 +1,5 @@
 import SwiftUI
+import FirebaseStorage
 
 struct SavedDoodlesView: View {
     @Binding var savedDoodles: [SavedDoodle]
@@ -6,35 +7,48 @@ struct SavedDoodlesView: View {
     var body: some View {
         NavigationView {
             List(savedDoodles) { doodle in
-                VStack(alignment: .leading) {
-                    Text(doodle.title)
-                        .font(.headline)
-                    Text(doodle.description)
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                    if let url = URL(string: doodle.imageName), let imageData = try? Data(contentsOf: url), let image = UIImage(data: imageData) {
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 200)
-                    } else {
-                        Text("Image not available")
-                            .foregroundColor(.red)
+                HStack {
+                    if let imageURL = getImageURL(from: doodle.imageName) {
+                        AsyncImage(url: imageURL) { image in
+                            image.resizable()
+                                .scaledToFit()
+                                .frame(width: 50, height: 50)
+                                .cornerRadius(5)
+                        } placeholder: {
+                            ProgressView()
+                        }
+                    }
+
+                    VStack(alignment: .leading) {
+                        Text(doodle.title)
+                            .font(.headline)
+                        Text(doodle.description)
+                            .font(.subheadline)
+                        Text("by \(doodle.username)")
+                            .font(.caption)
+                            .foregroundColor(.gray)
                     }
                 }
-                .padding()
             }
             .navigationTitle("Saved Doodles")
         }
     }
-}
 
-struct SavedDoodlesView_Previews: PreviewProvider {
-    @State static var savedDoodles: [SavedDoodle] = [
-        SavedDoodle(id: UUID().uuidString, title: "Sample Doodle", description: "This is a sample doodle.", imageName: "")
-    ]
+    private func getImageURL(from imageName: String) -> URL? {
+        let storageRef = Storage.storage().reference().child(imageName)
+        var imageURL: URL?
 
-    static var previews: some View {
-        SavedDoodlesView(savedDoodles: $savedDoodles)
+        let semaphore = DispatchSemaphore(value: 0)
+        storageRef.downloadURL { url, error in
+            if let error = error {
+                print("Error getting download URL: \(error.localizedDescription)")
+            } else {
+                imageURL = url
+            }
+            semaphore.signal()
+        }
+
+        _ = semaphore.wait(timeout: .now() + 10)
+        return imageURL
     }
 }
