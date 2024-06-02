@@ -1,30 +1,39 @@
 import Firebase
+import FirebaseAuth
 import SwiftUI
 
 class AuthManager: ObservableObject {
-    @Published var user: User?
+    @Published var user: FirebaseAuth.User?
     @Published var isAuthenticated = false
 
     init() {
         self.user = Auth.auth().currentUser
         self.isAuthenticated = user != nil
-        Auth.auth().addStateDidChangeListener { _, user in
-            self.user = user
-            self.isAuthenticated = user != nil
+        
+        Auth.auth().addStateDidChangeListener { [weak self] _, user in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.user = user
+                self.isAuthenticated = user != nil
+            }
         }
     }
 
-    func signIn(email: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
+    func signIn(email: String, password: String, completion: @escaping (Result<FirebaseAuth.User, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 completion(.failure(error))
             } else if let user = result?.user {
+                DispatchQueue.main.async {
+                    self.user = user
+                    self.isAuthenticated = true
+                }
                 completion(.success(user))
             }
         }
     }
 
-    func signUp(email: String, password: String, username: String, completion: @escaping (Result<User, Error>) -> Void) {
+    func signUp(email: String, password: String, username: String, completion: @escaping (Result<FirebaseAuth.User, Error>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 completion(.failure(error))
@@ -35,6 +44,10 @@ class AuthManager: ObservableObject {
                     if let error = error {
                         completion(.failure(error))
                     } else {
+                        DispatchQueue.main.async {
+                            self.user = user
+                            self.isAuthenticated = true
+                        }
                         completion(.success(user))
                     }
                 }
@@ -44,7 +57,9 @@ class AuthManager: ObservableObject {
 
     func signOut() throws {
         try Auth.auth().signOut()
-        self.user = nil
-        self.isAuthenticated = false
+        DispatchQueue.main.async {
+            self.user = nil
+            self.isAuthenticated = false
+        }
     }
 }
